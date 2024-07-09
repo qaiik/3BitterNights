@@ -1,0 +1,128 @@
+/*  MMC = Main Menu CSS  */
+
+/*  
+
+CSS = Visual styling, not important to mechanics, 
+this file can be completely ignored unless you want to see the logic behind some simple animations 
+
+*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
+@keyframes fadeint {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: #B2BEB5;
+    }
+} /*fade in title*/
+
+@keyframes fadeins {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: white;
+    }
+} /*fade in secondary*/
+@keyframes fadeinc {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+} /*fade in canvas*/
+
+
+* {
+    user-select: none;
+    overflow: hidden;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+
+.title {
+    animation: fadeint 3s;
+    font-size: 42px;
+    font-family: "Lato", Arial;
+    color: #B2BEB5;
+    transition: 1s ease-in-out;
+}
+
+.secondary {
+    animation: fadeins 3s;
+    font-size: 30px;
+    font-family: "Lato", Arial;
+    color: white;
+    transition: 0.5s ease-in-out;
+}
+
+.title:hover {
+    color: black;
+}
+
+.tip {
+    animation: fadeins 3s;
+    font-size: 19px;
+    font-family: "Jura", Arial;
+    color: white;
+    transition: 1s ease-in-out;
+}
+
+.secondary:hover {
+    color: dimgray;
+    font-size:28px;
+
+}   
+.poslgt {
+    position: absolute;
+    left: 15%;
+    top: 10%;
+}
+
+.poslg2 {
+    position: absolute;
+    left: 15%;
+    top: 30%;
+}
+
+.poslg3 {
+    position: absolute;
+    left: 15%;
+    top: 40%;
+}
+
+.poslg4 {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+}
+
+.postip {
+    position: absolute;
+    left: 50%;
+    bottom: 3%;   
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.gamec {
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    animation: fadeinc 3s;
+}
+
+.titleImage {
+    display: none;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Three Bitter Nights | Main Menu
+        </title>
+        <link href="./css/mmc.css" rel="stylesheet"/>
+        <script src="./tips.js"></script>
+        <img class="titleImage" src="./assets/titleImages/wow.jpg"></img>
+    </head>
+    <body>
+        <canvas class="gamec"></canvas>
+        <span class="title poslgt">Three Bitter Nights</span>
+        <span class="secondary poslg2">Night <sub class='nn'>1</sub></span>
+        <span class="secondary poslg3">Extras</span>
+        <span class="secondary poslg4">Source Code <sub class='nn'>&</sub> Mechanics</span>
+        <span class="tip postip"></span>
+        <script>
+
+        function gri(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+            let counter = 0;
+            let n = 0;
+            const title = document.querySelector(".title")
+            function animateTitle() {
+                if (counter === n) {
+                    // title.innerText = Z.generate("Three Bitter Nights")
+                    title.style.fontSize = `${gri(40,41)}px`
+                    // title.style.color = "white"
+                } else if (counter !== n) {
+                    // title.innerText = "Three Bitter Nights"
+                    title.style.fontSize = "42px"
+                    // title.style.color = "#B2BEB5"
+                }
+                requestAnimationFrame(animateTitle);
+            }
+            n = Math.floor(Math.random() * 20)
+            animateTitle()
+            setInterval(() => {
+                counter++
+                if (counter >= 20) {
+                    counter = 0
+                    n = Math.floor(Math.random() * 20)
+                }
+                
+            }, 1000)
+
+            setInterval(() => {
+
+            })
+        </script>
+
+        <script>
+
+            /* stolen from chatgpt */
+            function createRandomPicker(arr) {
+                let previousIndex = -1;
+
+                    return function() {
+                        if (arr.length === 0) {
+                            throw new Error("Array is empty.");
+                        }
+
+                        let index;
+                        do {
+                            index = Math.floor(Math.random() * arr.length);
+                        } while (index === previousIndex);
+
+                        previousIndex = index;
+                        return arr[index];
+                };
+            }
+
+            const pickrandom = createRandomPicker(T)
+            setTimeout(() => {
+                document.querySelector('.tip').innerText = pickrandom()
+            }, 2000)
+            setInterval(() => {
+                document.querySelector('.tip').innerText = pickrandom()
+            }, 10000)
+
+            const shell = require('electron').shell;
+            function onc(e, f) {
+                document.querySelector(e).onclick = f;
+            }
+            onc(".poslg2", () => {
+                location.replace('./nights/1/1.html')
+            })
+            
+            onc(".poslg3", () => {
+                location.replace('./extras.html')
+            })
+
+            onc(".poslg4", () => {
+                shell.openExternal("https://github.com/qaiik/3BitterNights")
+            })
+
+            
+
+            setInterval(() => {
+                if (Math.random() * 100000 < 1) {
+                    document.innerText = "congrats, you got the 1/100,000 (every second) chance "
+                    setTimeout(location.reload, 3000)
+                }
+            }, 1000)
+            const a = new Audio('./menuloop.wav')
+            a.loop = true
+            a.volume = 0.6
+            a.play()
+
+            const ctx = document.querySelector('.gamec').getContext('2d');
+            // ctx.fillStyle="red";
+            // ctx.fillRect(0,5,100,100)
+
+            const images = Array.from(document.querySelectorAll('.titleImage'))
+            ctx.filter = 'brightness(45%)'
+            ctx.drawImage(images[0], 0, 0)
+            setInterval(() => {
+                ctx.drawImage(images[Math.floor(Math.random() * images.length)], 0, 0)
+            }, 7000)
+        </script>
+    </body>
+</html>
